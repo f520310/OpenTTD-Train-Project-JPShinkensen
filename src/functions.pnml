@@ -79,7 +79,7 @@ if (param_basecapacity == 2) {
         0: return string(ONLY_ADD_MUCAR_FULL);
     }
 
-    switch(FEAT_TRAINS, SELF, sw_attach_mu_car_ms, [vehicle_type_id == mu_car_ms || vehicle_type_id == mu_car_mail_ms]) {
+    switch(FEAT_TRAINS, SELF, sw_attach_mu_car_ms, [vehicle_type_id == mu_car_ms]) {
         0: return string(ONLY_ADD_MUCAR_MINI);
     }
 

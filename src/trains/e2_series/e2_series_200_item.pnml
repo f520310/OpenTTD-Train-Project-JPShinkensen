@@ -12,8 +12,7 @@
 			vehicle_type_id == series_e3_2000 ||
 			vehicle_type_id == series_e3_700 ||
 			vehicle_type_id == mu_car_ms ||
-			vehicle_type_id == mu_car_mail ||
-			vehicle_type_id == mu_car_mail_ms
+			vehicle_type_id == mu_car_mail
 		] ) {
         	0: return string(ONLY_ADD_MUCAR_FULL);
     	}

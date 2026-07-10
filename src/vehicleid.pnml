@@ -4,7 +4,6 @@
 item(FEAT_TRAINS, mu_car_ms, 1111) {}
 item(FEAT_TRAINS, mu_car_full, 1112) {}
 item(FEAT_TRAINS, mu_car_mail, 1113) {}
-item(FEAT_TRAINS, mu_car_mail_ms, 1114) {}
 
 item(FEAT_TRAINS, series_0, 123) {}
 item(FEAT_TRAINS, series_922, 922) {}
@@ -107,6 +106,5 @@ sort(FEAT_TRAINS, [
 mu_car_full,
 mu_car_mail,
 mu_car_ms,
-mu_car_mail_ms,
 
 ]);

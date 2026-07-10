@@ -751,7 +751,7 @@ switch(FEAT_TRAINS, SELF, logo_jppsks, param_hide_logo) {1:sprite_logo_jppsks;}
             tractive_effort_coefficient:  0.3;
             air_drag_coefficient:         0;
             reliability_decay:            20;
-            refittable_cargo_classes:     bitmask(CC_PASSENGERS, CC_MAIL);  // 允許迷你新幹線車廂也能運郵件
+            refittable_cargo_classes:     bitmask(CC_PASSENGERS);  // 迷你車廂保持只載客，避免舊存檔衝突
             cargo_age_period:             185;
             refit_cost:                   0;
             track_type:                   MINI_SHINKANSEN;
@@ -817,7 +817,7 @@ switch(FEAT_TRAINS, SELF, logo_jppsks, param_hide_logo) {1:sprite_logo_jppsks;}
             tractive_effort_coefficient:    0.3;
             air_drag_coefficient:           0;
             reliability_decay:              20;
-            refittable_cargo_classes:       bitmask(CC_PASSENGERS, CC_MAIL);  // 允許一般新幹線車廂也能運郵件
+            refittable_cargo_classes:       bitmask(CC_PASSENGERS);  // mu_car_full 保持只載客，郵件功能由 mu_car_mail 負責
             cargo_age_period:               185;
             refit_cost:                     0;
             track_type:                     SHINKANSEN;
@@ -886,7 +886,7 @@ switch(FEAT_TRAINS, SELF, logo_jppsks, param_hide_logo) {1:sprite_logo_jppsks;}
             tractive_effort_coefficient:    0.3;
             air_drag_coefficient:           0;
             reliability_decay:              20;
-            refittable_cargo_classes:       bitmask(CC_PASSENGERS, CC_MAIL);  // 允許磁浮車廂也能運郵件
+            refittable_cargo_classes:       bitmask(CC_PASSENGERS);  // 磁浮車廂保持只載客
             cargo_age_period:               185;
             refit_cost:                     0;
             track_type:                     SC_MAGLEV;

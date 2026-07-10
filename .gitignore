@@ -1,0 +1,12 @@
+.code-workspace
+.directory
+.nmlcache
+*.cacheindex
+*.cache
+__pycache__
+
+# Backup folders of stuff in case I screw up
+backups/
+
+# Research and Docs
+research/

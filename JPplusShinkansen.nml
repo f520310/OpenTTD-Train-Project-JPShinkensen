@@ -8,7 +8,7 @@ grf {
 	name: 					string(STR_GRF_NAME);
 	desc:					string(STR_GRF_DESC);
 	version:				66;	// v0.6.6 (M003: mail car for all shinkansen)
-	min_compatible_version: 66;	// v0.6.6 - 不向下相容舊版存檔
+	min_compatible_version: 65;	// 向下相容 v0.6.5 存檔
 		// Hide logo
 		param 3 {
         	param_hide_logo {

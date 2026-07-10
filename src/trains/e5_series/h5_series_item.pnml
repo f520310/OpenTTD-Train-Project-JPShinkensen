@@ -14,7 +14,8 @@
 			vehicle_type_id == series_e3_2000 ||
 			vehicle_type_id == series_e3_700 ||
 			vehicle_type_id == mu_car_ms ||
-			vehicle_type_id == mu_car_mail
+			vehicle_type_id == mu_car_mail ||
+			vehicle_type_id == mu_car_mail_ms
 		] ) {
         	0: return string(ONLY_ADD_MUCAR_FULL);
     	}
@@ -90,7 +91,7 @@ item(FEAT_TRAINS, series_h5) {
       }
       /* 郵件車塗裝覆蓋 */
       livery_override(mu_car_mail){
-        default:                        sw_h5_series_midcars;
+        default:                        sw_h5_series_graphics;
         cargo_capacity:                 25 * CapacityFactor();
         cargo_age_period:				param_decay_express;
         loading_speed:                  25 * CapacityFactor() / param_loading_2D;

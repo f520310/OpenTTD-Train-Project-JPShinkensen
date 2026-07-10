@@ -260,35 +260,25 @@
 
 // MAIL (MINI SHINKANSEN)
 // 迷你新幹線專用郵件車（track_type: MINI_SHINKANSEN, 支援郵件+商品）
-
-    /* --- Articulated part callback  --- */
-    switch(FEAT_TRAINS, SELF, sw_mucar_mail_ms_articulated_part, getbits(extra_callback_info1, 0, 8)) {
-        1: return mu_car_mail_ms;
-        2: return mu_car_mail_ms;
-        return CB_RESULT_NO_MORE_ARTICULATED_PARTS;
-    }
-
-    switch (FEAT_TRAINS, SELF, sw_mucar_mail_ms_graphics, position_in_articulated_veh) {
-            1:  ss_mucar_mail_10;
-            dummy_sprites;
-        }
+// 結構跟 mu_car_ms 一樣：單節車，length 8，無關節連接
 
     switch(FEAT_TRAINS, SELF, sw_mucar_mail_ms_purchase, [
             STORE_TEMP(CB_FLAG_MORE_SPRITES | PALETTE_USE_DEFAULT, 0x100), getbits(extra_callback_info1, 8, 8) ]) {
                 0: logo_jppsks;
-                1: ss_mucar_mail_buy;
+                1: ss_mucar_mini_buy;
             }
 
     item(FEAT_TRAINS, mu_car_mail_ms) {
         property {
             name:                         string(MUCAR_MAIL);
+            misc_flags:                   bitmask(TRAIN_FLAG_2CC,TRAIN_FLAG_SPRITE_STACK);
             introduction_date:            date(1800,1,1);
             climates_available:           ALL_CLIMATES;
             model_life:                   VEHICLE_NEVER_EXPIRES;
             vehicle_life:                 60;
             loading_speed:                0;
             cost_factor:                  189;
-            running_cost_factor:          18;
+            running_cost_factor:          6;
             speed:                        0 km/h;
             power:                        0 hp;
             cargo_capacity:               1;
@@ -307,14 +297,13 @@
             visual_effect_and_powered:    visual_effect_and_powered(VISUAL_EFFECT_DISABLE, 0, DISABLE_WAGON_POWER);
             sprite_id:                    SPRITE_ID_NEW_TRAIN;
             dual_headed:                  0;
+            length:                       8;
             extra_power_per_wagon:        0;
             bitmask_vehicle_info:         0;
         }
         graphics {
-            default:                        sw_mucar_mail_ms_graphics;
-            purchase:                       sw_mucar_mail_ms_purchase;
-            additional_text:                return string(MUCAR_MAIL_DESC);
-            articulated_part:               sw_mucar_mail_ms_articulated_part;
-            length:                         8;
+            purchase:                     sw_mucar_mail_ms_purchase;
+            additional_text:              return string(MUCAR_MAIL_DESC);
+            set_mu_car_base;
         }
     }

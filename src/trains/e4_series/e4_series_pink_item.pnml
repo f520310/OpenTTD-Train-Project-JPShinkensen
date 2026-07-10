@@ -87,7 +87,7 @@ item(FEAT_TRAINS, series_e4_pink) {
       }
       /* 郵件車塗裝覆蓋 */
       livery_override(mu_car_mail){
-        default:                        sw_e4_series_pink_graphics;
+        default:                        sw_e4_series_pink_midcars;
         cargo_capacity:                 35 * CapacityFactor();
         cargo_age_period:				param_decay_express;
         loading_speed:                  35 * CapacityFactor() / param_loading_2D;

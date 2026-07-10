@@ -73,7 +73,7 @@ item(FEAT_TRAINS, series_300) {
       }
       /* 郵件車塗裝覆蓋 */
       livery_override(mu_car_mail){
-        default:                        sw_300_series_graphics;
+        default:                        sw_300_series_midcars;
         cargo_capacity:                 28 * CapacityFactor();
         cargo_age_period:				param_decay_express;
         loading_speed:					28 * CapacityFactor() / param_loading_2D;

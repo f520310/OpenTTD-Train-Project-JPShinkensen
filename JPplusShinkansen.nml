@@ -2179,7 +2179,7 @@ item(FEAT_TRAINS, series_0) {
       }
       /* 郵件車塗裝覆蓋 */
       livery_override(mu_car_mail){
-        default:                        sw_0_series_graphics;
+        default:                        sw_0_series_midcars;
         cargo_capacity:                 28 * CapacityFactor();
         cargo_age_period:				param_decay_express;
         loading_speed:					28 * CapacityFactor() / param_loading_2D;
@@ -2544,7 +2544,7 @@ item(FEAT_TRAINS, series_922) {
       }
       /* 郵件車塗裝覆蓋 */
       livery_override(mu_car_mail){
-        default:                        sw_922_series_graphics;
+        default:                        sw_922_series_midcars;
         cargo_capacity:                 0;
         cargo_age_period:				param_decay_express;
         loading_speed:					25;
@@ -2625,7 +2625,7 @@ item(FEAT_TRAINS, series_922) {
       }
       /* 郵件車塗裝覆蓋 */
       livery_override(mu_car_mail){
-        default:                        sw_922_series_graphics;
+        default:                        sw_922_series_midcars;
         cargo_capacity:                 40 * CapacityFactor();
         cargo_age_period:				param_decay_express;
         loading_speed:					40 * CapacityFactor() / param_loading_2D;
@@ -2706,7 +2706,7 @@ item(FEAT_TRAINS, series_922) {
       }
       /* 郵件車塗裝覆蓋 */
       livery_override(mu_car_mail){
-        default:                        sw_922_series_graphics;
+        default:                        sw_922_series_midcars;
         cargo_capacity:                 28 * CapacityFactor();
         cargo_age_period:				param_decay_express;
         loading_speed:					28 * CapacityFactor() / param_loading_2D;
@@ -4994,7 +4994,7 @@ item(FEAT_TRAINS, series_n700) {
       }
       /* 郵件車塗裝覆蓋 */
       livery_override(mu_car_mail){
-        default:                        sw_n700_series_graphics;
+        default:                        sw_n700_series_midcars;
         cargo_capacity:                 28 * CapacityFactor();	
         cargo_age_period:				param_decay_express;
         loading_speed:                  28 * CapacityFactor() / param_loading_2D;
@@ -5081,7 +5081,7 @@ item(FEAT_TRAINS, series_n700a) {
       }
       /* 郵件車塗裝覆蓋 */
       livery_override(mu_car_mail){
-        default:                        sw_n700a_series_graphics;
+        default:                        sw_n700_series_midcars;
         cargo_capacity:                 28 * CapacityFactor();	
         cargo_age_period:				param_decay_express;
         loading_speed:                  28 * CapacityFactor() / param_loading_2D;
@@ -5169,7 +5169,7 @@ item(FEAT_TRAINS, series_n700s) {
       }
       /* 郵件車塗裝覆蓋 */
       livery_override(mu_car_mail){
-        default:                        sw_n700s_series_graphics;
+        default:                        sw_n700s_series_midcars;
         cargo_capacity:                 28 * CapacityFactor();	
         cargo_age_period:				param_decay_express;
         loading_speed:                  28 * CapacityFactor() / param_loading_2D;
@@ -6764,7 +6764,7 @@ item(FEAT_TRAINS, series_700) {
       }
       /* 郵件車塗裝覆蓋 */
       livery_override(mu_car_mail){
-        default:                        sw_700_series_graphics;
+        default:                        sw_700_series_midcars;
         cargo_capacity:                 28 * CapacityFactor();
         cargo_age_period:				param_decay_express;
         loading_speed:					28 * CapacityFactor() / param_loading_2D;
@@ -8771,7 +8771,7 @@ item(FEAT_TRAINS, series_500) {
       }
       /* 郵件車塗裝覆蓋 */
       livery_override(mu_car_mail){
-        default:                        sw_500_series_graphics;
+        default:                        sw_500_series_midcars;
         cargo_capacity:                 28 * CapacityFactor();
         cargo_age_period:				param_decay_express;
         loading_speed:					28 * CapacityFactor() / param_loading_2D;
@@ -9482,7 +9482,7 @@ item(FEAT_TRAINS, series_300) {
       }
       /* 郵件車塗裝覆蓋 */
       livery_override(mu_car_mail){
-        default:                        sw_300_series_graphics;
+        default:                        sw_300_series_midcars;
         cargo_capacity:                 28 * CapacityFactor();
         cargo_age_period:				param_decay_express;
         loading_speed:					28 * CapacityFactor() / param_loading_2D;
@@ -10804,7 +10804,7 @@ item(FEAT_TRAINS, series_100) {
       }
       /* 郵件車塗裝覆蓋 */
       livery_override(mu_car_mail){
-        default:                        sw_100_series_graphics;
+        default:                        sw_100_series_midcars;
         cargo_capacity:                 27 * CapacityFactor();	
         cargo_age_period:				param_decay_express;
         loading_speed:					27 * CapacityFactor() / param_loading_2D;
@@ -11542,7 +11542,7 @@ item(FEAT_TRAINS, series_800) {
       }
       /* 郵件車塗裝覆蓋 */
       livery_override(mu_car_mail){
-        default:                        sw_800_series_graphics;
+        default:                        sw_800_series_midcars;
         cargo_capacity:                 22 * CapacityFactor();
         cargo_age_period:				param_decay_express;
         loading_speed:                  22 * CapacityFactor() / param_loading_2D;
@@ -13255,7 +13255,7 @@ item(FEAT_TRAINS, series_200) {
       }
       /* 郵件車塗裝覆蓋 */
       livery_override(mu_car_mail){
-        default:                        sw_200_series_graphics;
+        default:                        sw_200_series_midcars;
         cargo_capacity:                 26 * CapacityFactor();	
         cargo_age_period:				param_decay_express;
         loading_speed:                  26 * CapacityFactor() / param_loading_2D;
@@ -13346,7 +13346,7 @@ item(FEAT_TRAINS, series_200_sharknose) {
       }
       /* 郵件車塗裝覆蓋 */
       livery_override(mu_car_mail){
-        default:                        sw_200_series_graphics;
+        default:                        sw_200_series_midcars;
         cargo_capacity:                 26 * CapacityFactor();	
         cargo_age_period:				param_decay_express;
         loading_speed:                  26 * CapacityFactor() / param_loading_2D;
@@ -13435,7 +13435,7 @@ item(FEAT_TRAINS, series_200_275) {
       }
       /* 郵件車塗裝覆蓋 */
       livery_override(mu_car_mail){
-        default:                        sw_200_series_graphics;
+        default:                        sw_200_series_midcars;
         cargo_capacity:                 26 * CapacityFactor();	
         cargo_age_period:				param_decay_express;
         loading_speed:                  26 * CapacityFactor() / param_loading_2D;
@@ -14221,7 +14221,7 @@ item(FEAT_TRAINS, series_e1_original) {
       }
       /* 郵件車塗裝覆蓋 */
       livery_override(mu_car_mail){
-        default:                        sw_e1_series_original_graphics;
+        default:                        sw_e1_series_original_midcars;
         colour_mapping:                 return base_sprite_2cc + CB_RESULT_COLOUR_MAPPING_ADD_CC;
         cargo_capacity:                 34 * CapacityFactor();
         cargo_age_period:				param_decay_express;
@@ -14654,7 +14654,7 @@ item(FEAT_TRAINS, series_e1_refurb) {
       }
       /* 郵件車塗裝覆蓋 */
       livery_override(mu_car_mail){
-        default:                        sw_e1_series_refurb_graphics;
+        default:                        sw_e1_series_refurb_midcars;
         colour_mapping:                 return base_sprite_2cc + CB_RESULT_COLOUR_MAPPING_ADD_CC;
         cargo_capacity:                 34 * CapacityFactor();
         cargo_age_period:				param_decay_express;
@@ -15113,7 +15113,7 @@ item(FEAT_TRAINS, series_e2_red) {
       }
       /* 郵件車塗裝覆蓋 */
       livery_override(mu_car_mail){
-        default:                        sw_e2_series_red_graphics;
+        default:                        sw_e2_series_red_midcars;
         cargo_capacity:                 27 * CapacityFactor();
         cargo_age_period:				param_decay_express;
         loading_speed:					27 * CapacityFactor() / param_loading_2D;
@@ -15570,7 +15570,7 @@ item(FEAT_TRAINS, series_e2_pink) {
       }
       /* 郵件車塗裝覆蓋 */
       livery_override(mu_car_mail){
-        default:                        sw_e2_series_pink_graphics;
+        default:                        sw_e2_series_pink_midcars;
         cargo_capacity:                 27 * CapacityFactor();
         cargo_age_period:				param_decay_express;
         loading_speed:					27 * CapacityFactor() / param_loading_2D;
@@ -16219,7 +16219,7 @@ item(FEAT_TRAINS, series_e2_200) {
       }
       /* 郵件車塗裝覆蓋 */
       livery_override(mu_car_mail){
-        default:                        sw_e2_series_200_graphics;
+        default:                        sw_e2_series_200_midcars;
         cargo_capacity:                 27 * CapacityFactor();
         cargo_age_period:				param_decay_express;
         loading_speed:					27 * CapacityFactor() / param_loading_2D;
@@ -17745,7 +17745,7 @@ item(FEAT_TRAINS, series_e4_yellow) {
       }
       /* 郵件車塗裝覆蓋 */
       livery_override(mu_car_mail){
-        default:                        sw_e4_series_yellow_graphics;
+        default:                        sw_e4_series_yellow_midcars;
         cargo_capacity:                 35 * CapacityFactor();
         cargo_age_period:				param_decay_express;
         loading_speed:                  35 * CapacityFactor() / param_loading_2D;
@@ -18213,7 +18213,7 @@ item(FEAT_TRAINS, series_e4_pink) {
       }
       /* 郵件車塗裝覆蓋 */
       livery_override(mu_car_mail){
-        default:                        sw_e4_series_pink_graphics;
+        default:                        sw_e4_series_pink_midcars;
         cargo_capacity:                 35 * CapacityFactor();
         cargo_age_period:				param_decay_express;
         loading_speed:                  35 * CapacityFactor() / param_loading_2D;
@@ -18679,7 +18679,7 @@ item(FEAT_TRAINS, series_e5) {
       }
       /* 郵件車塗裝覆蓋 */
       livery_override(mu_car_mail){
-        default:                        sw_e5_series_graphics;
+        default:                        sw_e5_series_midcars;
         cargo_capacity:                 25 * CapacityFactor();
         cargo_age_period:				param_decay_express;
         loading_speed:                  25 * CapacityFactor() / param_loading_2D;
@@ -19141,7 +19141,7 @@ item(FEAT_TRAINS, series_h5) {
       }
       /* 郵件車塗裝覆蓋 */
       livery_override(mu_car_mail){
-        default:                        sw_h5_series_graphics;
+        default:                        sw_h5_series_midcars;
         cargo_capacity:                 25 * CapacityFactor();
         cargo_age_period:				param_decay_express;
         loading_speed:                  25 * CapacityFactor() / param_loading_2D;
@@ -19801,7 +19801,7 @@ item(FEAT_TRAINS, series_e7) {
       }
       /* 郵件車塗裝覆蓋 */
       livery_override(mu_car_mail){
-        default:                        sw_e7_series_graphics;
+        default:                        sw_e7_series_midcars;
         cargo_capacity:                 26 * CapacityFactor();
         cargo_age_period:				param_decay_express;
         loading_speed:                  26 * CapacityFactor() / param_loading_2D;
@@ -20456,7 +20456,7 @@ item(FEAT_TRAINS, series_e10) {
       }
       /* 郵件車塗裝覆蓋 */
       livery_override(mu_car_mail){
-        default:                        sw_e10_series_graphics;
+        default:                        sw_e10_series_midcars;
         cargo_capacity:                 25 * CapacityFactor();
         cargo_age_period:				param_decay_express;
         loading_speed:                  25 * CapacityFactor() / param_loading_2D;

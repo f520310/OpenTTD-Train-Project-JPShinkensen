@@ -74,7 +74,7 @@ if (param_basecapacity == 2) {
 		return CB_RESULT_NO_TEXT; 
 	}
 
-// Attach Mucar Full (also allow mu_car_mail)
+// Attach Mucar Full
     switch(FEAT_TRAINS, SELF, sw_attach_mu_car_full, [vehicle_type_id == mu_car_full || vehicle_type_id == mu_car_mail]) {
         0: return string(ONLY_ADD_MUCAR_FULL);
     }

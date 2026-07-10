@@ -1,0 +1,110 @@
+// Assign IDs
+
+// Mucars
+item(FEAT_TRAINS, mu_car_ms, 1111) {}
+item(FEAT_TRAINS, mu_car_full, 1112) {}
+item(FEAT_TRAINS, mu_car_mail, 1113) {}
+
+item(FEAT_TRAINS, series_0, 123) {}
+item(FEAT_TRAINS, series_922, 922) {}
+item(FEAT_TRAINS, series_100, 124) {}
+// 200 Series Shinkansen
+item(FEAT_TRAINS, series_200, 200) {}
+item(FEAT_TRAINS, series_200_sharknose, 201) {}
+item(FEAT_TRAINS, series_200_275, 202) {}
+item(FEAT_TRAINS, series_200400, 204) {}
+item(FEAT_TRAINS, series_200e3, 203) {}
+
+item(FEAT_TRAINS, series_300, 300) {}
+item(FEAT_TRAINS, series_301, 301) {}
+item(FEAT_TRAINS, series_400, 400) {}
+item(FEAT_TRAINS, series_500, 500) {}
+item(FEAT_TRAINS, series_700, 700) {}
+item(FEAT_TRAINS, series_923, 923) {}
+// N700 Series Shinkansen
+item(FEAT_TRAINS, series_n700, 707) {}
+item(FEAT_TRAINS, series_n700a, 708) {}
+item(FEAT_TRAINS, series_n700s, 709) {}
+item(FEAT_TRAINS, series_n700_kyushu, 778) {}
+
+item(FEAT_TRAINS, series_800, 800) {}
+item(FEAT_TRAINS, series_e1_original, 2001) {}
+item(FEAT_TRAINS, series_e1_refurb, 2011) {}
+item(FEAT_TRAINS, series_e2_red, 1552) {}
+item(FEAT_TRAINS, series_e2_pink, 1553) {}
+item(FEAT_TRAINS, series_e2_200, 1554) {}
+item(FEAT_TRAINS, series_e3_r, 2003) {}
+item(FEAT_TRAINS, series_e3_1000, 2013) {}
+item(FEAT_TRAINS, series_e3_2000, 2023) {}
+item(FEAT_TRAINS, series_e3_700, 2033) {}
+item(FEAT_TRAINS, series_e4_yellow, 2004) {}
+item(FEAT_TRAINS, series_e4_pink, 2014) {}
+item(FEAT_TRAINS, series_e4e3, 2043) {}
+item(FEAT_TRAINS, series_e4400, 2044) {}
+item(FEAT_TRAINS, series_e5, 2005) {}
+item(FEAT_TRAINS, series_h5, 2105) {} 
+item(FEAT_TRAINS, series_e6, 2006) {}
+item(FEAT_TRAINS, series_e5e3, 2053) {}
+item(FEAT_TRAINS, series_e5e6, 2056) {}
+item(FEAT_TRAINS, series_e5e8, 2058) {}
+item(FEAT_TRAINS, series_e7, 2007) {}
+item(FEAT_TRAINS, series_e8, 2008) {}
+item(FEAT_TRAINS, series_e10, 2010) {}
+
+item(FEAT_TRAINS, series_l0, 125) {}
+
+item(FEAT_TRAINS, series_test_700, 707) {}
+
+// Sort the Order in the Purchase Menu below
+sort(FEAT_TRAINS, [
+
+/* Not JR East */
+125,    // L0 Series Shinkansen
+123,    // 0 Series Shinkansen
+922,    // 922 Series Shinkansen
+124,    // 100 Series Shinkansen
+300,    // 300 Series Shinkansen
+500,    // 500 Series Shinkansen
+700,    // 700 Series Shinkansen
+923,    // 923 Series Shinkansen
+707,    // N700 Series Shinkansen
+708,    // N700A Series Shinkansen
+709,    // N700S Series Shinkansen
+800,    // 800 Series Shinkansen
+
+/* JR East */
+200,    // 200 Series Shinkansen
+201,    // 200 Series Sharknose Shinkansen
+202,    // 200 Series Modified 275 Shinkansen
+204,    // 200/400 Series Shinkansen
+203,    // 200/E3 Series Shinkansen
+400,    // 400 Series Shinkansen
+2001,   // E1 Series Shinkansen (Original)
+2011,   // E1 Series Shinkansen (Refurbished)
+1552,   // E2 Series Shinkansen (Red stripe)
+1553,   // E2 Series Shinkansen (Pink stripe)
+1554,   // E2 Series Shinkansen (200)
+2003,   // E3 Series Shinkansen
+2013,   // E3 Series 1000 Shinkansen
+2023,   // E3 Series 2000 Shinkansen
+2033,   // E3 Series 700 Shinkansen
+2004,   // E4 Series Shinkansen (Max) Yellow Stripe
+2014,   // E4 Series Shinkansen (Max) Pink Stripe
+2044,   // E4/400 Series Shinkansen
+2043,   // E4/E3 Series Shinkansen
+2005,   // E5 Series Shinkansen
+2105,   // H5 Series Shinkansen
+2053,   // E5/E3 Shinakansen
+2056,   // E5/E6 Shinakansen
+2058,   // E5/E8 Shinakansen
+2006,   // E6 Series Shinkansen
+2007,   // E7/W7 Series Shinkansen
+2008,   // E8 Series Shinkansen
+2010,   // E10 Series Shinkansen
+
+/*MU Cars*/
+mu_car_full,
+mu_car_mail,
+mu_car_ms,
+
+]);

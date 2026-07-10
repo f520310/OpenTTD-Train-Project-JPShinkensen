@@ -1,0 +1,107 @@
+grf {
+	grfid: 					"KR03";
+	name: 					string(STR_GRF_NAME);
+	desc:					string(STR_GRF_DESC);
+	version:				65;	// v0.6.5
+	min_compatible_version: 65;	// v0.6.5
+		// Hide logo
+		param 3 {
+        	param_hide_logo {
+				type: bool;
+				name: string(STR_PARAM_HIDE_LOGO);
+				desc: string(STR_PARAM_HIDE_LOGO);
+				bit: 0;
+				def_value: 1;
+            }
+        }
+		//pax capacity
+		param 2 {
+				param_basecapacity {
+						type: int;
+						name: string(STR_PARAM_NAME_BASECAPACITY);
+						desc: string(STR_PARAM_DESC_BASECAPACITY);
+						min_value: 0;
+						max_value: 3;
+						def_value: 0;
+						names: {
+												0: string(STR_PARAM_REAL);
+												1: string(STR_PARAM_1_25);
+												2: string(STR_PARAM_1_50);
+												3: string(STR_PARAM_DOUBLE);
+						};
+				}
+		}
+		// Doctor Yellow Usage
+		param 8 {
+				param_dryellow {
+						type: int;
+						name: string(STR_PARAM_NAME_DRYELLOW);
+						desc: string(STR_PARAM_DESC_DRYELLOW);
+						min_value: 0;
+						max_value: 2;
+						def_value: 0;
+						names: {
+												0: string(STR_PARAM_GIMMICK);
+												1: string(STR_PARAM_MAIL);
+												2: string(STR_PARAM_PASSENGERS);
+						};
+				}
+		}
+		//basecosts
+		param 0 {
+				param_basecostbuy {
+						type: int;
+						name: string(STR_PARAM_NAME_BASECOSTMODBUY);
+						desc: string(STR_PARAM_DESC_BASECOSTMODBUY);
+						min_value: 0;
+						max_value: 2;
+						def_value: 1;
+						names: {
+												0: string(STR_PARAM_LOW);
+												1: string(STR_PARAM_NORMAL);
+												2: string(STR_PARAM_HIGH);
+						};
+				}
+		}
+		//runningcosts
+		param 1 {
+				param_basecostrun {
+						type: int;
+						name: string(STR_PARAM_NAME_BASECOSTMODRUN);
+						desc: string(STR_PARAM_DESC_BASECOSTMODRUN);
+						min_value: 0;
+						max_value: 4;
+						def_value: 2;
+						names: {
+												0: string(STR_PARAM_VLOW);
+												1: string(STR_PARAM_LOW);
+												2: string(STR_PARAM_NORMAL);
+												3: string(STR_PARAM_HIGH);
+												4: string(STR_PARAM_VHIGH);
+						};
+				}
+		}
+		//cargo decay
+		param 5 {
+			 param_cargodecay {
+						type: int;
+						name: string(STR_PARAM_NAME_DECAY);
+						desc: string(STR_PARAM_DESC_DECAY);
+						min_value: 0;
+						max_value: 2;
+						def_value: 0;
+						names: {
+												0: string(STR_PARAM_NORMAL);
+												1: string(STR_PARAM_LOW);
+												2: string(STR_PARAM_VLOW);
+				};
+			 
+			}	
+		}
+}
+
+// Cargo table
+cargotable {
+	PASS,
+	MAIL
+}

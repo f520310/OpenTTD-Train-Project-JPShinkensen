@@ -72,7 +72,7 @@ item(FEAT_TRAINS, series_500) {
 		//weight:						// Apply weight to graphics block to calculate Max T.E. correctly
         //running_cost_factor:            sw_500_series_running_costs;
       }
-      /* 讓 500 系覆寫郵件車的外觀，掛載時自動套用 500 系塗裝 */
+      /* 郵件車塗裝覆蓋 */
       livery_override(mu_car_mail){
         default:                        sw_500_series_graphics;
         cargo_capacity:                 28 * CapacityFactor();
@@ -80,5 +80,8 @@ item(FEAT_TRAINS, series_500) {
         loading_speed:					28 * CapacityFactor() / param_loading_2D;
 		articulated_part:				sw_mucar_full_articulated_part;
 		length:							sw_length_1_8_1;
+		//power:						// Apply power in graphics block to calculate power based on number of motorised cars correctly
+		//weight:						// Apply weight to graphics block to calculate Max T.E. correctly
+        //running_cost_factor:            sw_500_series_running_costs;
       }
 }

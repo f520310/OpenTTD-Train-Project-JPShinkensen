@@ -16480,7 +16480,7 @@ item(FEAT_TRAINS, series_e2_200) {
 
 /* Find the cabs */
 
-	switch (FEAT_TRAINS, SELF, sw_e3_series_r_mucars, position_in_vehid_chain_from_end == 0  ) {
+	switch (FEAT_TRAINS, SELF, sw_e3_series_r_mucars, position_in_consist_from_end == 0  ) {
 		1:  sw_e3_series_r_cab002;
 		//sw_e3_series_r_midcars;
 		sw_e3_series_r_penultimate_carcheck;
@@ -16724,7 +16724,7 @@ item(FEAT_TRAINS, series_e3_r) {
 
 /* Find the cabs */
 
-	switch (FEAT_TRAINS, SELF, sw_e3_series_1000_mucars, position_in_vehid_chain_from_end == 0  ) {
+	switch (FEAT_TRAINS, SELF, sw_e3_series_1000_mucars, position_in_consist_from_end == 0  ) {
 		1:  sw_e3_series_1000_cab002;
 		//sw_e3_series_1000_midcars;
 		sw_e3_series_1000_penultimate_carcheck;
@@ -16969,7 +16969,7 @@ item(FEAT_TRAINS, series_e3_1000) {
 
 /* Find the cabs */
 
-	switch (FEAT_TRAINS, SELF, sw_e3_series_2000_mucars, position_in_vehid_chain_from_end == 0  ) {
+	switch (FEAT_TRAINS, SELF, sw_e3_series_2000_mucars, position_in_consist_from_end == 0  ) {
 		1:  sw_e3_series_2000_cab002;
 		//sw_e3_series_2000_midcars;
 		sw_e3_series_2000_penultimate_carcheck;
@@ -17306,7 +17306,7 @@ item(FEAT_TRAINS, series_e3_2000) {
 
 /* Find the cabs */
 
-	switch (FEAT_TRAINS, SELF, sw_e3_series_700_mucars, position_in_vehid_chain_from_end == 0  ) {
+	switch (FEAT_TRAINS, SELF, sw_e3_series_700_mucars, position_in_consist_from_end == 0  ) {
 		1:  sw_e3_series_700_cab002;
 		sw_e3_series_toreiyu_penultimate_carcheck;
 	}
@@ -19410,7 +19410,7 @@ item(FEAT_TRAINS, series_h5) {
 
 /* Find the cabs */
 
-	switch (FEAT_TRAINS, SELF, sw_e6_series_mucars, position_in_vehid_chain_from_end == 0  ) {
+	switch (FEAT_TRAINS, SELF, sw_e6_series_mucars, position_in_consist_from_end == 0  ) {
 		1:  sw_e6_series_cab002;
 		sw_e6_series_midcars;
 	}
@@ -20076,7 +20076,7 @@ item(FEAT_TRAINS, series_e7) {
 
 /* Find the cabs */
 
-	switch (FEAT_TRAINS, SELF, sw_e8_series_mucars, position_in_vehid_chain_from_end == 0  ) {
+	switch (FEAT_TRAINS, SELF, sw_e8_series_mucars, position_in_consist_from_end == 0  ) {
 		1:  sw_e8_series_cab002;
 		sw_e8_series_midcars;
 	}

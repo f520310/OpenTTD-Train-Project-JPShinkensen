@@ -28,7 +28,7 @@
 
 /* Find the cabs */
 
-	switch (FEAT_TRAINS, SELF, sw_e6_series_mucars, position_in_vehid_chain_from_end == 0  ) {
+	switch (FEAT_TRAINS, SELF, sw_e6_series_mucars, position_in_consist_from_end == 0  ) {
 		1:  sw_e6_series_cab002;
 		sw_e6_series_midcars;
 	}

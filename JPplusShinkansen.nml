@@ -7,7 +7,7 @@ grf {
 	grfid: 					"KR03";
 	name: 					string(STR_GRF_NAME);
 	desc:					string(STR_GRF_DESC);
-	version:				66;	// v0.6.6 M006
+	version:				65;	// v0.6.5
 	min_compatible_version: 65;	// v0.6.5
 		// Hide logo
 		param 3 {

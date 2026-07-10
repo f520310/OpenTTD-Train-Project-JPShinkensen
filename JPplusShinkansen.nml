@@ -529,8 +529,8 @@ if (param_basecapacity == 2) {
 		return CB_RESULT_NO_TEXT; 
 	}
 
-// Attach Mucar Full
-    switch(FEAT_TRAINS, SELF, sw_attach_mu_car_full, [vehicle_type_id == mu_car_full]) {
+// Attach Mucar Full (also allow mu_car_mail)
+    switch(FEAT_TRAINS, SELF, sw_attach_mu_car_full, [vehicle_type_id == mu_car_full || vehicle_type_id == mu_car_mail]) {
         0: return string(ONLY_ADD_MUCAR_FULL);
     }
 
@@ -751,7 +751,7 @@ switch(FEAT_TRAINS, SELF, logo_jppsks, param_hide_logo) {1:sprite_logo_jppsks;}
             tractive_effort_coefficient:  0.3;
             air_drag_coefficient:         0;
             reliability_decay:            20;
-            refittable_cargo_classes:     bitmask(CC_PASSENGERS);
+            refittable_cargo_classes:     bitmask(CC_PASSENGERS, CC_MAIL);  // 允許迷你新幹線車廂也能運郵件
             cargo_age_period:             185;
             refit_cost:                   0;
             track_type:                   MINI_SHINKANSEN;
@@ -936,14 +936,12 @@ switch(FEAT_TRAINS, SELF, logo_jppsks, param_hide_logo) {1:sprite_logo_jppsks;}
         return CB_RESULT_NO_MORE_ARTICULATED_PARTS;
     }
 
-    if (param_dryellow == 1) {
-
     item(FEAT_TRAINS, mu_car_mail) {
         /* Define properties first, make sure to set all of them */
         property {
             name:                         string(MUCAR_MAIL);
             introduction_date:            date(1800,1,1);
-            climates_available:           ALL_CLIMATES;
+            climates_available:           ALL_CLIMATES;    // 不再受 param_dryellow 限制，永遠可購買
             model_life:                   VEHICLE_NEVER_EXPIRES;
             vehicle_life:                 60;
             loading_speed:                0;
@@ -956,7 +954,7 @@ switch(FEAT_TRAINS, SELF, logo_jppsks, param_hide_logo) {1:sprite_logo_jppsks;}
             tractive_effort_coefficient:  0.3;
             air_drag_coefficient:         0;
             reliability_decay:            20;
-            refittable_cargo_classes:     bitmask(CC_MAIL);
+            refittable_cargo_classes:     bitmask(CC_PASSENGERS, CC_MAIL);  // 允許在乘客與郵件之間改裝
             cargo_age_period:             185;
             refit_cost:                   0;
             track_type:                   SHINKANSEN;
@@ -980,7 +978,6 @@ switch(FEAT_TRAINS, SELF, logo_jppsks, param_hide_logo) {1:sprite_logo_jppsks;}
             articulated_part:               sw_mucar_mail_articulated_part;
             length:                         sw_length_1_8_1;  
         }
-    }
     }
 # 1 "JPplusShinkansen.pnml" 4
 
@@ -8664,6 +8661,15 @@ item(FEAT_TRAINS, series_500) {
 		//power:						// Apply power in graphics block to calculate power based on number of motorised cars correctly
 		//weight:						// Apply weight to graphics block to calculate Max T.E. correctly
         //running_cost_factor:            sw_500_series_running_costs;
+      }
+      /* 讓 500 系覆寫郵件車的外觀，掛載時自動套用 500 系塗裝 */
+      livery_override(mu_car_mail){
+        default:                        sw_500_series_graphics;
+        cargo_capacity:                 28 * CapacityFactor();
+        cargo_age_period:				param_decay_express;
+        loading_speed:					28 * CapacityFactor() / param_loading_2D;
+		articulated_part:				sw_mucar_full_articulated_part;
+		length:							sw_length_1_8_1;
       }
 }
 # 1 "src/trains/500_series/500_series.pnml" 2

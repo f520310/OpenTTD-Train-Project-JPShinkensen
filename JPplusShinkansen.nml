@@ -817,7 +817,7 @@ switch(FEAT_TRAINS, SELF, logo_jppsks, param_hide_logo) {1:sprite_logo_jppsks;}
             tractive_effort_coefficient:    0.3;
             air_drag_coefficient:           0;
             reliability_decay:              20;
-            refittable_cargo_classes:       bitmask(CC_PASSENGERS);
+            refittable_cargo_classes:       bitmask(CC_PASSENGERS, CC_MAIL);  // 允許一般新幹線車廂也能運郵件
             cargo_age_period:               185;
             refit_cost:                     0;
             track_type:                     SHINKANSEN;
@@ -886,7 +886,7 @@ switch(FEAT_TRAINS, SELF, logo_jppsks, param_hide_logo) {1:sprite_logo_jppsks;}
             tractive_effort_coefficient:    0.3;
             air_drag_coefficient:           0;
             reliability_decay:              20;
-            refittable_cargo_classes:       bitmask(CC_PASSENGERS);
+            refittable_cargo_classes:       bitmask(CC_PASSENGERS, CC_MAIL);  // 允許磁浮車廂也能運郵件
             cargo_age_period:               185;
             refit_cost:                     0;
             track_type:                     SC_MAGLEV;
@@ -2175,6 +2175,18 @@ item(FEAT_TRAINS, series_0) {
 		//weight:						// Apply weight to graphics block to calculate Max T.E. correctly
         //running_cost_factor:            sw_0_series_running_costs;
       }
+      /* 郵件車塗裝覆蓋 */
+      livery_override(mu_car_mail){
+        default:                        sw_0_series_graphics;
+        cargo_capacity:                 28 * CapacityFactor();
+        cargo_age_period:				param_decay_express;
+        loading_speed:					28 * CapacityFactor() / param_loading_2D;
+		articulated_part:				sw_mucar_full_articulated_part;
+		length:							sw_length_1_8_1;
+		//power:						// Apply power in graphics block to calculate power based on number of motorised cars correctly
+		//weight:						// Apply weight to graphics block to calculate Max T.E. correctly
+        //running_cost_factor:            sw_0_series_running_costs;
+      }
 }
 # 1 "src/trains/0_series/0_series.pnml" 2
 # 1 "JPplusShinkansen.pnml" 4
@@ -2528,6 +2540,16 @@ item(FEAT_TRAINS, series_922) {
 		length:							sw_length_1_8_1;
         running_cost_factor:            0;
       }
+      /* 郵件車塗裝覆蓋 */
+      livery_override(mu_car_mail){
+        default:                        sw_922_series_graphics;
+        cargo_capacity:                 0;
+        cargo_age_period:				param_decay_express;
+        loading_speed:					25;
+		articulated_part:				sw_mucar_full_articulated_part;
+		length:							sw_length_1_8_1;
+        running_cost_factor:            0;
+      }
 }}
 
 // MAIL
@@ -2592,6 +2614,15 @@ item(FEAT_TRAINS, series_922) {
 	/*Multiple Unit Car*/
 	
       livery_override(mu_car_full){
+        default:                        sw_922_series_graphics;
+        cargo_capacity:                 40 * CapacityFactor();
+        cargo_age_period:				param_decay_express;
+        loading_speed:					40 * CapacityFactor() / param_loading_2D;
+		articulated_part:				sw_mucar_full_articulated_part;
+		length:							sw_length_1_8_1;
+      }
+      /* 郵件車塗裝覆蓋 */
+      livery_override(mu_car_mail){
         default:                        sw_922_series_graphics;
         cargo_capacity:                 40 * CapacityFactor();
         cargo_age_period:				param_decay_express;
@@ -2664,6 +2695,15 @@ item(FEAT_TRAINS, series_922) {
 	/*Multiple Unit Car*/
 	
       livery_override(mu_car_full){
+        default:                        sw_922_series_graphics;
+        cargo_capacity:                 28 * CapacityFactor();
+        cargo_age_period:				param_decay_express;
+        loading_speed:					28 * CapacityFactor() / param_loading_2D;
+		articulated_part:				sw_mucar_full_articulated_part;
+		length:							sw_length_1_8_1;
+      }
+      /* 郵件車塗裝覆蓋 */
+      livery_override(mu_car_mail){
         default:                        sw_922_series_graphics;
         cargo_capacity:                 28 * CapacityFactor();
         cargo_age_period:				param_decay_express;
@@ -4950,6 +4990,18 @@ item(FEAT_TRAINS, series_n700) {
 		//weight:						// Apply weight to graphics block to calculate Max T.E. correctly
         //running_cost_factor:            sw_n700_series_running_costs;
       }
+      /* 郵件車塗裝覆蓋 */
+      livery_override(mu_car_mail){
+        default:                        sw_n700_series_graphics;
+        cargo_capacity:                 28 * CapacityFactor();	
+        cargo_age_period:				param_decay_express;
+        loading_speed:                  28 * CapacityFactor() / param_loading_2D;
+		articulated_part:				sw_mucar_full_articulated_part;
+		length:							sw_length_1_8_1;
+		//power:						// Apply power in graphics block to calculate power based on number of motorised cars correctly
+		//weight:						// Apply weight to graphics block to calculate Max T.E. correctly
+        //running_cost_factor:            sw_n700_series_running_costs;
+      }
 }
 
 switch (FEAT_TRAINS, SELF, sw_n700a_series_articulated_part, extra_callback_info1) {
@@ -5015,6 +5067,18 @@ item(FEAT_TRAINS, series_n700a) {
 	/*Multiple Unit Car*/
 	
       livery_override(mu_car_full){
+        default:                        sw_n700a_series_graphics;
+        cargo_capacity:                 28 * CapacityFactor();	
+        cargo_age_period:				param_decay_express;
+        loading_speed:                  28 * CapacityFactor() / param_loading_2D;
+		articulated_part:				sw_mucar_full_articulated_part;
+		length:							sw_length_1_8_1;
+		//power:						// Apply power in graphics block to calculate power based on number of motorised cars correctly
+		//weight:						// Apply weight to graphics block to calculate Max T.E. correctly
+        //running_cost_factor:            sw_n700a_series_running_costs;
+      }
+      /* 郵件車塗裝覆蓋 */
+      livery_override(mu_car_mail){
         default:                        sw_n700a_series_graphics;
         cargo_capacity:                 28 * CapacityFactor();	
         cargo_age_period:				param_decay_express;
@@ -5091,6 +5155,18 @@ item(FEAT_TRAINS, series_n700s) {
 	/*Multiple Unit Car*/
 	
       livery_override(mu_car_full){
+        default:                        sw_n700s_series_graphics;
+        cargo_capacity:                 28 * CapacityFactor();	
+        cargo_age_period:				param_decay_express;
+        loading_speed:                  28 * CapacityFactor() / param_loading_2D;
+		articulated_part:				sw_mucar_full_articulated_part;
+		length:							sw_length_1_8_1;
+		//power:						// Apply power in graphics block to calculate power based on number of motorised cars correctly
+		//weight:						// Apply weight to graphics block to calculate Max T.E. correctly
+        //running_cost_factor:            sw_n700s_series_running_costs;
+      }
+      /* 郵件車塗裝覆蓋 */
+      livery_override(mu_car_mail){
         default:                        sw_n700s_series_graphics;
         cargo_capacity:                 28 * CapacityFactor();	
         cargo_age_period:				param_decay_express;
@@ -6684,6 +6760,18 @@ item(FEAT_TRAINS, series_700) {
 		//weight:						// Apply weight to graphics block to calculate Max T.E. correctly
         //running_cost_factor:            sw_700_series_running_costs;
       }
+      /* 郵件車塗裝覆蓋 */
+      livery_override(mu_car_mail){
+        default:                        sw_700_series_graphics;
+        cargo_capacity:                 28 * CapacityFactor();
+        cargo_age_period:				param_decay_express;
+        loading_speed:					28 * CapacityFactor() / param_loading_2D;
+		articulated_part:				sw_mucar_full_articulated_part;
+		length:							sw_length_1_8_1;
+		//power:						// Apply power in graphics block to calculate power based on number of motorised cars correctly
+		//weight:						// Apply weight to graphics block to calculate Max T.E. correctly
+        //running_cost_factor:            sw_700_series_running_costs;
+      }
 }
 
 /* DR YELLOW 923 SERIES */
@@ -6760,6 +6848,16 @@ item(FEAT_TRAINS, series_700) {
 
 		}    
 		livery_override(mu_car_full){
+			default:                        sw_923_series_graphics;
+			cargo_capacity:                 0;	
+			cargo_age_period:				param_decay_express;
+			loading_speed:                  25;
+			articulated_part:				sw_mucar_full_articulated_part;
+			length:							sw_length_1_8_1;
+			running_cost_factor:            0;
+		}
+		/* 郵件車塗裝覆蓋 */
+		livery_override(mu_car_mail){
 			default:                        sw_923_series_graphics;
 			cargo_capacity:                 0;	
 			cargo_age_period:				param_decay_express;
@@ -6898,6 +6996,15 @@ item(FEAT_TRAINS, series_700) {
 			purchase_running_cost_factor:   295 + 125 * NumberCarsInConsist();
 		}
 		livery_override(mu_car_full){
+			default:                        sw_923_series_graphics;
+			cargo_capacity:                 26 * CapacityFactor();	
+			cargo_age_period:				param_decay_express;
+			loading_speed:                  26 * CapacityFactor() / param_loading_2D;
+			articulated_part:				sw_mucar_full_articulated_part;
+			length:							sw_length_1_8_1;
+		}
+		/* 郵件車塗裝覆蓋 */
+		livery_override(mu_car_mail){
 			default:                        sw_923_series_graphics;
 			cargo_capacity:                 26 * CapacityFactor();	
 			cargo_age_period:				param_decay_express;
@@ -9368,6 +9475,18 @@ item(FEAT_TRAINS, series_300) {
 		//weight:						// Apply weight to graphics block to calculate Max T.E. correctly
         //running_cost_factor:            sw_300_series_running_costs;
       }
+      /* 郵件車塗裝覆蓋 */
+      livery_override(mu_car_mail){
+        default:                        sw_300_series_graphics;
+        cargo_capacity:                 28 * CapacityFactor();
+        cargo_age_period:				param_decay_express;
+        loading_speed:					28 * CapacityFactor() / param_loading_2D;
+		articulated_part:				sw_mucar_full_articulated_part;
+		length:							sw_length_1_8_1;
+		//power:						// Apply power in graphics block to calculate power based on number of motorised cars correctly
+		//weight:						// Apply weight to graphics block to calculate Max T.E. correctly
+        //running_cost_factor:            sw_300_series_running_costs;
+      }
 }
 # 1 "src/trains/300_series/300_series.pnml" 2
 # 1 "JPplusShinkansen.pnml" 4
@@ -10678,6 +10797,18 @@ item(FEAT_TRAINS, series_100) {
 		//weight:						// Apply weight to graphics block to calculate Max T.E. correctly
         //running_cost_factor:            sw_100_series_running_costs;
       }
+      /* 郵件車塗裝覆蓋 */
+      livery_override(mu_car_mail){
+        default:                        sw_100_series_graphics;
+        cargo_capacity:                 27 * CapacityFactor();	
+        cargo_age_period:				param_decay_express;
+        loading_speed:					27 * CapacityFactor() / param_loading_2D;
+		articulated_part:				sw_mucar_full_articulated_part;
+		length:							sw_length_1_8_1;
+		//power:						// Apply power in graphics block to calculate power based on number of motorised cars correctly
+		//weight:						// Apply weight to graphics block to calculate Max T.E. correctly
+        //running_cost_factor:            sw_100_series_running_costs;
+      }
 }
 # 1 "src/trains/100_series/100_series.pnml" 2
 # 1 "JPplusShinkansen.pnml" 4
@@ -11327,7 +11458,7 @@ switch (FEAT_TRAINS, SELF, sw_800_series_articulated_part, extra_callback_info1)
 	}
 
 /*---Coupling Switch---*/
-switch(FEAT_TRAINS, SELF, sw_800_series_attach_vehid, [vehicle_type_id == mu_car_full]) {
+switch(FEAT_TRAINS, SELF, sw_800_series_attach_vehid, [vehicle_type_id == mu_car_full || vehicle_type_id == mu_car_mail]) {
  0: return string(ONLY_ADD_MUCAR);
 }
 
@@ -11394,6 +11525,18 @@ item(FEAT_TRAINS, series_800) {
 	/*Multiple Unit Car*/
 	
       livery_override(mu_car_full){
+        default:                        sw_800_series_graphics;
+        cargo_capacity:                 22 * CapacityFactor();
+        cargo_age_period:				param_decay_express;
+        loading_speed:                  22 * CapacityFactor() / param_loading_2D;
+		articulated_part:				sw_mucar_full_articulated_part;
+		length:							sw_length_1_8_1;
+		//power:						// Apply power in graphics block to calculate power based on number of motorised cars correctly
+		//weight:						// Apply weight to graphics block to calculate Max T.E. correctly
+        //running_cost_factor:            sw_800_series_running_costs;
+      }
+      /* 郵件車塗裝覆蓋 */
+      livery_override(mu_car_mail){
         default:                        sw_800_series_graphics;
         cargo_capacity:                 22 * CapacityFactor();
         cargo_age_period:				param_decay_express;
@@ -13105,6 +13248,18 @@ item(FEAT_TRAINS, series_200) {
 		//weight:						// Apply weight to graphics block to calculate Max T.E. correctly
         //running_cost_factor:            sw_200_series_running_costs;
       }
+      /* 郵件車塗裝覆蓋 */
+      livery_override(mu_car_mail){
+        default:                        sw_200_series_graphics;
+        cargo_capacity:                 26 * CapacityFactor();	
+        cargo_age_period:				param_decay_express;
+        loading_speed:                  26 * CapacityFactor() / param_loading_2D;
+		articulated_part:				sw_mucar_full_articulated_part;
+		length:							sw_length_1_8_1;
+		//power:						// Apply power in graphics block to calculate power based on number of motorised cars correctly
+		//weight:						// Apply weight to graphics block to calculate Max T.E. correctly
+        //running_cost_factor:            sw_200_series_running_costs;
+      }
 }
 
 
@@ -13184,6 +13339,18 @@ item(FEAT_TRAINS, series_200_sharknose) {
 		//weight:						// Apply weight to graphics block to calculate Max T.E. correctly
         //running_cost_factor:            sw_200_series_sharknose_running_costs;
       }
+      /* 郵件車塗裝覆蓋 */
+      livery_override(mu_car_mail){
+        default:                        sw_200_series_graphics;
+        cargo_capacity:                 26 * CapacityFactor();	
+        cargo_age_period:				param_decay_express;
+        loading_speed:                  26 * CapacityFactor() / param_loading_2D;
+		articulated_part:				sw_mucar_full_articulated_part;
+		length:							sw_length_1_8_1;
+		//power:						// Apply power in graphics block to calculate power based on number of motorised cars correctly
+		//weight:						// Apply weight to graphics block to calculate Max T.E. correctly
+        //running_cost_factor:            sw_200_series_sharknose_running_costs;
+      }
 }
 
 switch (FEAT_TRAINS, SELF, sw_200_series_original_275_articulated_part, extra_callback_info1) {
@@ -13251,6 +13418,18 @@ item(FEAT_TRAINS, series_200_275) {
 	/*Multiple Unit Car*/
 	
       livery_override(mu_car_full){
+        default:                        sw_200_series_graphics;
+        cargo_capacity:                 26 * CapacityFactor();	
+        cargo_age_period:				param_decay_express;
+        loading_speed:                  26 * CapacityFactor() / param_loading_2D;
+		articulated_part:				sw_mucar_full_articulated_part;
+		length:							sw_length_1_8_1;
+		//power:						// Apply power in graphics block to calculate power based on number of motorised cars correctly
+		//weight:						// Apply weight to graphics block to calculate Max T.E. correctly
+        //running_cost_factor:            sw_200_series_running_costs;
+      }
+      /* 郵件車塗裝覆蓋 */
+      livery_override(mu_car_mail){
         default:                        sw_200_series_graphics;
         cargo_capacity:                 26 * CapacityFactor();	
         cargo_age_period:				param_decay_express;
@@ -14035,6 +14214,19 @@ item(FEAT_TRAINS, series_e1_original) {
 		//weight:						// Apply weight to graphics block to calculate Max T.E. correctly
         //running_cost_factor:            sw_e1_series_running_costs;
       }
+      /* 郵件車塗裝覆蓋 */
+      livery_override(mu_car_mail){
+        default:                        sw_e1_series_original_graphics;
+        colour_mapping:                 return base_sprite_2cc + CB_RESULT_COLOUR_MAPPING_ADD_CC;
+        cargo_capacity:                 34 * CapacityFactor();
+        cargo_age_period:				param_decay_express;
+        loading_speed:					34 * CapacityFactor() / param_loading_2D;
+		articulated_part:				sw_mucar_full_articulated_part;
+		length:							sw_length_1_8_1;
+		//power:						// Apply power in graphics block to calculate power based on number of motorised cars correctly
+		//weight:						// Apply weight to graphics block to calculate Max T.E. correctly
+        //running_cost_factor:            sw_e1_series_running_costs;
+      }
 }
 # 1 "src/trains/e1_series/e1_series.pnml" 2
 
@@ -14455,6 +14647,19 @@ item(FEAT_TRAINS, series_e1_refurb) {
 		//weight:						// Apply weight to graphics block to calculate Max T.E. correctly
         //running_cost_factor:            sw_e1_series_running_costs;
       }
+      /* 郵件車塗裝覆蓋 */
+      livery_override(mu_car_mail){
+        default:                        sw_e1_series_refurb_graphics;
+        colour_mapping:                 return base_sprite_2cc + CB_RESULT_COLOUR_MAPPING_ADD_CC;
+        cargo_capacity:                 34 * CapacityFactor();
+        cargo_age_period:				param_decay_express;
+        loading_speed:					34 * CapacityFactor() / param_loading_2D;
+		articulated_part:				sw_mucar_full_articulated_part;
+		length:							sw_length_1_8_1;
+		//power:						// Apply power in graphics block to calculate power based on number of motorised cars correctly
+		//weight:						// Apply weight to graphics block to calculate Max T.E. correctly
+        //running_cost_factor:            sw_e1_series_running_costs;
+      }
 }
 # 1 "src/trains/e1_series/e1_series.pnml" 2
 # 1 "JPplusShinkansen.pnml" 4
@@ -14825,7 +15030,8 @@ item(FEAT_TRAINS, series_e1_refurb) {
 			vehicle_type_id == series_e3_1000 ||
 			vehicle_type_id == series_e3_2000 ||
 			vehicle_type_id == series_e3_700 ||
-			vehicle_type_id == mu_car_ms
+			vehicle_type_id == mu_car_ms ||
+			vehicle_type_id == mu_car_mail
 		] ) {
         	0: return string(ONLY_ADD_MUCAR_FULL);
     	}
@@ -14890,6 +15096,18 @@ item(FEAT_TRAINS, series_e2_red) {
 	/*Multiple Unit Car*/
 	
       livery_override(mu_car_full){
+        default:                        sw_e2_series_red_graphics;
+        cargo_capacity:                 27 * CapacityFactor();
+        cargo_age_period:				param_decay_express;
+        loading_speed:					27 * CapacityFactor() / param_loading_2D;
+		articulated_part:				sw_mucar_full_articulated_part;
+		length:							sw_length_1_8_1;
+		//power:						// Apply power in graphics block to calculate power based on number of motorised cars correctly
+		//weight:						// Apply weight to graphics block to calculate Max T.E. correctly
+        //running_cost_factor:            sw_e2_series_red_running_costs;
+      }
+      /* 郵件車塗裝覆蓋 */
+      livery_override(mu_car_mail){
         default:                        sw_e2_series_red_graphics;
         cargo_capacity:                 27 * CapacityFactor();
         cargo_age_period:				param_decay_express;
@@ -15268,7 +15486,8 @@ item(FEAT_TRAINS, series_e2_red) {
 			vehicle_type_id == series_e3_1000 ||
 			vehicle_type_id == series_e3_2000 ||
 			vehicle_type_id == series_e3_700 ||
-			vehicle_type_id == mu_car_ms
+			vehicle_type_id == mu_car_ms ||
+			vehicle_type_id == mu_car_mail
 		] ) {
         	0: return string(ONLY_ADD_MUCAR_FULL);
     	}
@@ -15334,6 +15553,18 @@ item(FEAT_TRAINS, series_e2_pink) {
 	/*Multiple Unit Car*/
 	
       livery_override(mu_car_full){
+        default:                        sw_e2_series_pink_graphics;
+        cargo_capacity:                 27 * CapacityFactor();
+        cargo_age_period:				param_decay_express;
+        loading_speed:					27 * CapacityFactor() / param_loading_2D;
+		articulated_part:				sw_mucar_full_articulated_part;
+		length:							sw_length_1_8_1;
+		//power:						// Apply power in graphics block to calculate power based on number of motorised cars correctly
+		//weight:						// Apply weight to graphics block to calculate Max T.E. correctly
+        //running_cost_factor:            sw_e2_series_pink_running_costs;
+      }
+      /* 郵件車塗裝覆蓋 */
+      livery_override(mu_car_mail){
         default:                        sw_e2_series_pink_graphics;
         cargo_capacity:                 27 * CapacityFactor();
         cargo_age_period:				param_decay_express;
@@ -15904,7 +16135,8 @@ item(FEAT_TRAINS, series_e2_pink) {
 			vehicle_type_id == series_e3_1000 ||
 			vehicle_type_id == series_e3_2000 ||
 			vehicle_type_id == series_e3_700 ||
-			vehicle_type_id == mu_car_ms
+			vehicle_type_id == mu_car_ms ||
+			vehicle_type_id == mu_car_mail
 		] ) {
         	0: return string(ONLY_ADD_MUCAR_FULL);
     	}
@@ -15970,6 +16202,18 @@ item(FEAT_TRAINS, series_e2_200) {
 	/*Multiple Unit Car*/
 	
       livery_override(mu_car_full){
+        default:                        sw_e2_series_200_graphics;
+        cargo_capacity:                 27 * CapacityFactor();
+        cargo_age_period:				param_decay_express;
+        loading_speed:					27 * CapacityFactor() / param_loading_2D;
+		articulated_part:				sw_mucar_full_articulated_part;
+		length:							sw_length_1_8_1;
+		//power:						// Apply power in graphics block to calculate power based on number of motorised cars correctly
+		//weight:						// Apply weight to graphics block to calculate Max T.E. correctly
+        //running_cost_factor:            sw_e2_series_200_running_costs;
+      }
+      /* 郵件車塗裝覆蓋 */
+      livery_override(mu_car_mail){
         default:                        sw_e2_series_200_graphics;
         cargo_capacity:                 27 * CapacityFactor();
         cargo_age_period:				param_decay_express;
@@ -17415,7 +17659,8 @@ item(FEAT_TRAINS, series_e3_700) {
 			vehicle_type_id == series_e3_1000 ||
 			vehicle_type_id == series_e3_2000 ||
 			vehicle_type_id == series_e3_700 ||
-			vehicle_type_id == mu_car_ms
+			vehicle_type_id == mu_car_ms ||
+			vehicle_type_id == mu_car_mail
 		] ) {
         	0: return string(ONLY_ADD_MUCAR_FULL);
     	}
@@ -17483,6 +17728,18 @@ item(FEAT_TRAINS, series_e4_yellow) {
 	/*Multiple Unit Car*/
 	
       livery_override(mu_car_full){
+        default:                        sw_e4_series_yellow_graphics;
+        cargo_capacity:                 35 * CapacityFactor();
+        cargo_age_period:				param_decay_express;
+        loading_speed:                  35 * CapacityFactor() / param_loading_2D;
+		articulated_part:				sw_mucar_full_articulated_part;
+		length:							sw_length_1_8_1;
+		//power:						// Apply power in graphics block to calculate power based on number of motorised cars correctly
+        //weight:						// Apply weight in graphics block to calculate Max T.E. correctly
+        //running_cost_factor:            sw_e4_series_running_costs;
+      }
+      /* 郵件車塗裝覆蓋 */
+      livery_override(mu_car_mail){
         default:                        sw_e4_series_yellow_graphics;
         cargo_capacity:                 35 * CapacityFactor();
         cargo_age_period:				param_decay_express;
@@ -17869,7 +18126,8 @@ item(FEAT_TRAINS, series_e4_yellow) {
 			vehicle_type_id == series_e3_1000 ||
 			vehicle_type_id == series_e3_2000 ||
 			vehicle_type_id == series_e3_700 ||
-			vehicle_type_id == mu_car_ms
+			vehicle_type_id == mu_car_ms ||
+			vehicle_type_id == mu_car_mail
 		] ) {
         	0: return string(ONLY_ADD_MUCAR_FULL);
     	}
@@ -17938,6 +18196,18 @@ item(FEAT_TRAINS, series_e4_pink) {
 	/*Multiple Unit Car*/
 	
       livery_override(mu_car_full){
+        default:                        sw_e4_series_pink_graphics;
+        cargo_capacity:                 35 * CapacityFactor();
+        cargo_age_period:				param_decay_express;
+        loading_speed:                  35 * CapacityFactor() / param_loading_2D;
+		articulated_part:				sw_mucar_full_articulated_part;
+		length:							sw_length_1_8_1;
+		//power:						// Apply power in graphics block to calculate power based on number of motorised cars correctly
+        //weight:						// Apply weight in graphics block to calculate Max T.E. correctly
+        //running_cost_factor:            sw_e4_series_running_costs;
+      }
+      /* 郵件車塗裝覆蓋 */
+      livery_override(mu_car_mail){
         default:                        sw_e4_series_pink_graphics;
         cargo_capacity:                 35 * CapacityFactor();
         cargo_age_period:				param_decay_express;
@@ -18326,7 +18596,8 @@ item(FEAT_TRAINS, series_e4_pink) {
 			vehicle_type_id == series_e3_1000 ||
 			vehicle_type_id == series_e3_2000 ||
 			vehicle_type_id == series_e3_700 ||
-			vehicle_type_id == mu_car_ms
+			vehicle_type_id == mu_car_ms ||
+			vehicle_type_id == mu_car_mail
 		] ) {
         	0: return string(ONLY_ADD_MUCAR_FULL);
     	}
@@ -18391,6 +18662,18 @@ item(FEAT_TRAINS, series_e5) {
 	/*Multiple Unit Car*/
 	
       livery_override(mu_car_full){
+        default:                        sw_e5_series_graphics;
+        cargo_capacity:                 25 * CapacityFactor();
+        cargo_age_period:				param_decay_express;
+        loading_speed:                  25 * CapacityFactor() / param_loading_2D;
+		articulated_part:				sw_mucar_full_articulated_part;
+		length:							sw_length_1_8_1;
+		//power:						// Apply power in graphics block to calculate power based on number of motorised cars correctly
+		//weight:						// Apply weight to graphics block to calculate Max T.E. correctly
+        //running_cost_factor:            sw_e5_series_running_costs;
+      }
+      /* 郵件車塗裝覆蓋 */
+      livery_override(mu_car_mail){
         default:                        sw_e5_series_graphics;
         cargo_capacity:                 25 * CapacityFactor();
         cargo_age_period:				param_decay_express;
@@ -18776,7 +19059,8 @@ item(FEAT_TRAINS, series_e5) {
 			vehicle_type_id == series_e3_1000 ||
 			vehicle_type_id == series_e3_2000 ||
 			vehicle_type_id == series_e3_700 ||
-			vehicle_type_id == mu_car_ms
+			vehicle_type_id == mu_car_ms ||
+			vehicle_type_id == mu_car_mail
 		] ) {
         	0: return string(ONLY_ADD_MUCAR_FULL);
     	}
@@ -18840,6 +19124,18 @@ item(FEAT_TRAINS, series_h5) {
 	/*Multiple Unit Car*/
 	
       livery_override(mu_car_full){
+        default:                        sw_h5_series_graphics;
+        cargo_capacity:                 25 * CapacityFactor();
+        cargo_age_period:				param_decay_express;
+        loading_speed:                  25 * CapacityFactor() / param_loading_2D;
+		articulated_part:				sw_mucar_full_articulated_part;
+		length:							sw_length_1_8_1;
+		//power:						// Apply power in graphics block to calculate power based on number of motorised cars correctly
+		//weight:						// Apply weight to graphics block to calculate Max T.E. correctly
+        //running_cost_factor:            sw_h5_series_running_costs;
+      }
+      /* 郵件車塗裝覆蓋 */
+      livery_override(mu_car_mail){
         default:                        sw_h5_series_graphics;
         cargo_capacity:                 25 * CapacityFactor();
         cargo_age_period:				param_decay_express;
@@ -19498,6 +19794,18 @@ item(FEAT_TRAINS, series_e7) {
 		//weight:						// Apply weight to graphics block to calculate Max T.E. correctly
         //running_cost_factor:            sw_e7_series_running_costs;
       }
+      /* 郵件車塗裝覆蓋 */
+      livery_override(mu_car_mail){
+        default:                        sw_e7_series_graphics;
+        cargo_capacity:                 26 * CapacityFactor();
+        cargo_age_period:				param_decay_express;
+        loading_speed:                  26 * CapacityFactor() / param_loading_2D;
+		articulated_part:				sw_mucar_full_articulated_part;
+		length:							sw_length_1_8_1;
+		//power:						// Apply power in graphics block to calculate power based on number of motorised cars correctly
+		//weight:						// Apply weight to graphics block to calculate Max T.E. correctly
+        //running_cost_factor:            sw_e7_series_running_costs;
+      }
 }
 # 1 "src/trains/e7_series/e7_series.pnml" 2
 # 1 "JPplusShinkansen.pnml" 4
@@ -20131,6 +20439,18 @@ item(FEAT_TRAINS, series_e10) {
 	/*Multiple Unit Car*/
 	
       livery_override(mu_car_full){
+        default:                        sw_e10_series_graphics;
+        cargo_capacity:                 25 * CapacityFactor();
+        cargo_age_period:				param_decay_express;
+        loading_speed:                  25 * CapacityFactor() / param_loading_2D;
+		articulated_part:				sw_mucar_full_articulated_part;
+		length:							sw_length_1_8_1;
+		//power:						// Apply power in graphics block to calculate power based on number of motorised cars correctly
+		//weight:						// Apply weight to graphics block to calculate Max T.E. correctly
+        //running_cost_factor:            sw_e10_series_running_costs;
+      }
+      /* 郵件車塗裝覆蓋 */
+      livery_override(mu_car_mail){
         default:                        sw_e10_series_graphics;
         cargo_capacity:                 25 * CapacityFactor();
         cargo_age_period:				param_decay_express;

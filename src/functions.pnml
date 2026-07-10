@@ -54,14 +54,14 @@ if (param_basecapacity == 2) {
         return 1;
     }
     
-// Return 1 if a cab
+// Return 1 if a cab (只有整個列車的頭尾才顯示車頭/車尾造型)
     switch(FEAT_TRAINS, SELF, IsCab, 
             position_in_consist == 0 || 
             position_in_consist == 1 || 
             position_in_consist == 2 || 
-            position_in_vehid_chain_from_end == 0 ||
-            position_in_vehid_chain_from_end == 1 ||
-            position_in_vehid_chain_from_end == 2
+            position_in_consist_from_end == 0 ||
+            position_in_consist_from_end == 1 ||
+            position_in_consist_from_end == 2
         ) {return;}
 
 // Return Car Number

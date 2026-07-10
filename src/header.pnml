@@ -2,7 +2,7 @@ grf {
 	grfid: 					"KR03";
 	name: 					string(STR_GRF_NAME);
 	desc:					string(STR_GRF_DESC);
-	version:				65;	// v0.6.5
+	version:				66;	// v0.6.6 (M002: mail car for all shinkansen)
 	min_compatible_version: 65;	// v0.6.5
 		// Hide logo
 		param 3 {

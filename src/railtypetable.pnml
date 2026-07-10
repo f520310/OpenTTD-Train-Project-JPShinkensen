@@ -1,0 +1,10 @@
+
+// https://newgrf-specs.tt-wiki.net/wiki/TracktypeLabels
+
+railtypetable {
+	RAIL,
+	ELRL,
+	SHINKANSEN: [SGAA, SAAE, ELRL],
+	MINI_SHINKANSEN: [SGAA, SAAE, ELRL],
+	SC_MAGLEV: [LCAI, LCAE, MGLV],
+}

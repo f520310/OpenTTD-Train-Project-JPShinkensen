@@ -7,7 +7,7 @@ grf {
 	grfid: 					"KR03";
 	name: 					string(STR_GRF_NAME);
 	desc:					string(STR_GRF_DESC);
-	version:				66;	// v0.6.6 (M003: mail car for all shinkansen)
+	version:				67;	// v0.6.7 (M003: mail car for all shinkansen)
 	min_compatible_version: 65;	// 向下相容 v0.6.5 存檔
 		// Hide logo
 		param 3 {
@@ -534,7 +534,7 @@ if (param_basecapacity == 2) {
         0: return string(ONLY_ADD_MUCAR_FULL);
     }
 
-    switch(FEAT_TRAINS, SELF, sw_attach_mu_car_ms, [vehicle_type_id == mu_car_ms]) {
+    switch(FEAT_TRAINS, SELF, sw_attach_mu_car_ms, [vehicle_type_id == mu_car_ms || vehicle_type_id == mu_car_mail_ms]) {
         0: return string(ONLY_ADD_MUCAR_MINI);
     }
 
@@ -568,6 +568,7 @@ if (param_basecapacity == 2) {
 item(FEAT_TRAINS, mu_car_ms, 1111) {}
 item(FEAT_TRAINS, mu_car_full, 1112) {}
 item(FEAT_TRAINS, mu_car_mail, 1113) {}
+item(FEAT_TRAINS, mu_car_mail_ms, 1114) {}
 
 item(FEAT_TRAINS, series_0, 123) {}
 item(FEAT_TRAINS, series_922, 922) {}
@@ -670,6 +671,7 @@ sort(FEAT_TRAINS, [
 mu_car_full,
 mu_car_mail,
 mu_car_ms,
+mu_car_mail_ms,
 
 ]);
 # 1 "JPplusShinkansen.pnml" 4
@@ -975,6 +977,67 @@ switch(FEAT_TRAINS, SELF, logo_jppsks, param_hide_logo) {1:sprite_logo_jppsks;}
             additional_text:			    return string(MUCAR_MAIL_DESC);
             articulated_part:               sw_mucar_mail_articulated_part;
             length:                         sw_length_1_8_1;  
+        }
+    }
+
+// MAIL (MINI SHINKANSEN)
+// 迷你新幹線專用郵件車（track_type: MINI_SHINKANSEN）
+
+    /* --- Articulated part callback  --- */
+    switch(FEAT_TRAINS, SELF, sw_mucar_mail_ms_articulated_part, getbits(extra_callback_info1, 0, 8)) {
+        1: return mu_car_mail_ms;
+        2: return mu_car_mail_ms;
+        return CB_RESULT_NO_MORE_ARTICULATED_PARTS;
+    }
+
+    switch (FEAT_TRAINS, SELF, sw_mucar_mail_ms_graphics, position_in_articulated_veh) {				
+            1:  ss_mucar_mail_10; 				
+            dummy_sprites;
+        }
+
+    switch(FEAT_TRAINS, SELF, sw_mucar_mail_ms_purchase, [ 
+            STORE_TEMP(CB_FLAG_MORE_SPRITES | PALETTE_USE_DEFAULT, 0x100), getbits(extra_callback_info1, 8, 8) ]) { 
+                0: logo_jppsks; 
+                1: ss_mucar_mail_buy;
+            }
+
+    item(FEAT_TRAINS, mu_car_mail_ms) {
+        property {
+            name:                         string(MUCAR_MAIL);
+            introduction_date:            date(1800,1,1);
+            climates_available:           ALL_CLIMATES;
+            model_life:                   VEHICLE_NEVER_EXPIRES;
+            vehicle_life:                 60;
+            loading_speed:                0;
+            cost_factor:                  189;
+            running_cost_factor:          18;
+            speed:                        0 km/h;
+            power:                        0 hp;
+            cargo_capacity:               1;
+            weight:                       0 ton;
+            tractive_effort_coefficient:  0.3;
+            air_drag_coefficient:         0;
+            reliability_decay:            20;
+            refittable_cargo_classes:     bitmask(CC_PASSENGERS, CC_MAIL);
+            cargo_age_period:             185;
+            refit_cost:                   0;
+            track_type:                   MINI_SHINKANSEN;
+            extra_flags:                  bitmask(VEHICLE_FLAG_TRAIN_HAS_CAB);
+            ai_special_flag:              AI_FLAG_PASSENGER;
+            running_cost_base:            RUNNING_COST_ELECTRIC;
+            engine_class:                 ENGINE_CLASS_ELECTRIC;
+            visual_effect_and_powered:    visual_effect_and_powered(VISUAL_EFFECT_DISABLE, 0, DISABLE_WAGON_POWER);
+            sprite_id:                    SPRITE_ID_NEW_TRAIN;
+            dual_headed:                  0;
+            extra_power_per_wagon:        0;
+            bitmask_vehicle_info:         0;
+        }
+        graphics {
+            default:                        sw_mucar_mail_ms_graphics;                     
+            purchase:                       sw_mucar_mail_ms_purchase;
+            additional_text:			    return string(MUCAR_MAIL_DESC);
+            articulated_part:               sw_mucar_mail_ms_articulated_part;
+            length:                         8;
         }
     }
 # 1 "JPplusShinkansen.pnml" 4
@@ -13727,7 +13790,7 @@ spriteset(ss_mid_400_series_pantob_rf2, "src/trains/400_series/gfx/400_series_re
 # 1 "src/trains/400_series/400_series_item.pnml" 1
 
 /*---Coupling Switch---*/
-    switch(FEAT_TRAINS, SELF, sw_400_series_attach_vehid, [vehicle_type_id == series_400 || vehicle_type_id == mu_car_ms]) {
+    switch(FEAT_TRAINS, SELF, sw_400_series_attach_vehid, [vehicle_type_id == series_400 || vehicle_type_id == mu_car_ms || vehicle_type_id == mu_car_mail_ms]) {
         0: return string(MU_UNIQUE);
     }
 /*---END OF SECTION---*/
@@ -13784,6 +13847,17 @@ item(FEAT_TRAINS, series_400) {
     }
     /*Multiple Unit Car*/
       livery_override(mu_car_ms){
+        default:                        sw_400_series_graphics;
+        cargo_capacity:                 57 * CapacityFactor();	
+        cargo_age_period:				param_decay_express;
+        loading_speed:                  57 * CapacityFactor() / param_loading_1D;
+        cargo_subtype_text:             sw_400_series_subtypetext;
+        //power:                          4 * 280;
+        //weight:                         42;
+        //running_cost_factor:            120;
+      }
+      /* 迷你新幹線郵件車塗裝覆蓋 */
+      livery_override(mu_car_mail_ms){
         default:                        sw_400_series_graphics;
         cargo_capacity:                 57 * CapacityFactor();	
         cargo_age_period:				param_decay_express;
@@ -15031,7 +15105,8 @@ item(FEAT_TRAINS, series_e1_refurb) {
 			vehicle_type_id == series_e3_2000 ||
 			vehicle_type_id == series_e3_700 ||
 			vehicle_type_id == mu_car_ms ||
-			vehicle_type_id == mu_car_mail
+			vehicle_type_id == mu_car_mail ||
+			vehicle_type_id == mu_car_mail_ms
 		] ) {
         	0: return string(ONLY_ADD_MUCAR_FULL);
     	}
@@ -15487,7 +15562,8 @@ item(FEAT_TRAINS, series_e2_red) {
 			vehicle_type_id == series_e3_2000 ||
 			vehicle_type_id == series_e3_700 ||
 			vehicle_type_id == mu_car_ms ||
-			vehicle_type_id == mu_car_mail
+			vehicle_type_id == mu_car_mail ||
+			vehicle_type_id == mu_car_mail_ms
 		] ) {
         	0: return string(ONLY_ADD_MUCAR_FULL);
     	}
@@ -16136,7 +16212,8 @@ item(FEAT_TRAINS, series_e2_pink) {
 			vehicle_type_id == series_e3_2000 ||
 			vehicle_type_id == series_e3_700 ||
 			vehicle_type_id == mu_car_ms ||
-			vehicle_type_id == mu_car_mail
+			vehicle_type_id == mu_car_mail ||
+			vehicle_type_id == mu_car_mail_ms
 		] ) {
         	0: return string(ONLY_ADD_MUCAR_FULL);
     	}
@@ -16422,7 +16499,7 @@ item(FEAT_TRAINS, series_e2_200) {
 # 1 "src/trains/e3_series/e3_series.pnml" 2
 # 1 "src/trains/e3_series/e3_series_r_item.pnml" 1
 /*---Coupling Switch---*/
-switch(FEAT_TRAINS, SELF, sw_e3_series_r_attach_vehid, [vehicle_type_id == series_e3_r || vehicle_type_id == mu_car_ms]) {
+switch(FEAT_TRAINS, SELF, sw_e3_series_r_attach_vehid, [vehicle_type_id == series_e3_r || vehicle_type_id == mu_car_ms || vehicle_type_id == mu_car_mail_ms]) {
  0: return string(MU_UNIQUE);
 }
 /*---END OF SECTION---*/
@@ -16479,6 +16556,17 @@ item(FEAT_TRAINS, series_e3_r) {
     }
     /*Multiple Unit Car*/
       livery_override(mu_car_ms){
+        default:                        sw_e3_series_r_graphics;
+        cargo_capacity:                 56 * CapacityFactor();										        // Average 338/6, 402/7, 394/7 = 56  	
+        cargo_age_period:				        param_decay_express;
+        loading_speed:					        56 * CapacityFactor() / param_loading_1D;					// Capacity divided by door loading factor
+        //cargo_subtype_text:             sw_e3_series_r_subtypetext_mucar;
+        //power:                        // Apply power in graphics block to calculate power based on number of motorised cars correctly
+        //weight:                         43;
+        //running_cost_factor:            120;
+      }
+      /* 迷你新幹線郵件車塗裝覆蓋 */
+      livery_override(mu_car_mail_ms){
         default:                        sw_e3_series_r_graphics;
         cargo_capacity:                 56 * CapacityFactor();										        // Average 338/6, 402/7, 394/7 = 56  	
         cargo_age_period:				        param_decay_express;
@@ -16655,7 +16743,7 @@ item(FEAT_TRAINS, series_e3_r) {
 # 1 "src/trains/e3_series/e3_series.pnml" 2
 # 1 "src/trains/e3_series/e3_series_1000_item.pnml" 1
 /*---Coupling Switch---*/
-switch(FEAT_TRAINS, SELF, sw_e3_series_1000_attach_vehid, [vehicle_type_id == series_e3_1000 || vehicle_type_id == mu_car_ms]) {
+switch(FEAT_TRAINS, SELF, sw_e3_series_1000_attach_vehid, [vehicle_type_id == series_e3_1000 || vehicle_type_id == mu_car_ms || vehicle_type_id == mu_car_mail_ms]) {
  0: return string(MU_UNIQUE);
 }
 /*---END OF SECTION---*/
@@ -16713,6 +16801,17 @@ item(FEAT_TRAINS, series_e3_1000) {
     }
     /*Multiple Unit Car*/
       livery_override(mu_car_ms){
+        default:                        sw_e3_series_1000_graphics;
+        cargo_capacity:                 56 * CapacityFactor();										        // Average 338/6, 402/7, 394/7 = 56  	
+        cargo_age_period:				        param_decay_express;
+        loading_speed:					        56 * CapacityFactor() / param_loading_1D;					// Capacity divided by door loading factor
+        //cargo_subtype_text:             sw_e3_series_1000_subtypetext_mucar;
+        //power:                        // Apply power in graphics block to calculate power based on number of motorised cars correctly
+        //weight:                         43;
+        //running_cost_factor:            120;
+      }
+      /* 迷你新幹線郵件車塗裝覆蓋 */
+      livery_override(mu_car_mail_ms){
         default:                        sw_e3_series_1000_graphics;
         cargo_capacity:                 56 * CapacityFactor();										        // Average 338/6, 402/7, 394/7 = 56  	
         cargo_age_period:				        param_decay_express;
@@ -16889,7 +16988,7 @@ item(FEAT_TRAINS, series_e3_1000) {
 # 1 "src/trains/e3_series/e3_series.pnml" 2
 # 1 "src/trains/e3_series/e3_series_2000_item.pnml" 1
 /*---Coupling Switch---*/
-switch(FEAT_TRAINS, SELF, sw_e3_series_2000_attach_vehid, [vehicle_type_id == series_e3_2000 || vehicle_type_id == mu_car_ms]) {
+switch(FEAT_TRAINS, SELF, sw_e3_series_2000_attach_vehid, [vehicle_type_id == series_e3_2000 || vehicle_type_id == mu_car_ms || vehicle_type_id == mu_car_mail_ms]) {
  0: return string(MU_UNIQUE);
 }
 /*---END OF SECTION---*/
@@ -16947,6 +17046,17 @@ item(FEAT_TRAINS, series_e3_2000) {
     }
     /*Multiple Unit Car*/
       livery_override(mu_car_ms){
+        default:                        sw_e3_series_2000_graphics;
+        cargo_capacity:                 56 * CapacityFactor();										        // Average 338/6, 402/7, 394/7 = 56  	
+        cargo_age_period:				        param_decay_express;
+        loading_speed:					        56 * CapacityFactor() / param_loading_1D;					// Capacity divided by door loading factor
+        //cargo_subtype_text:             sw_e3_series_2000_subtypetext_mucar;
+        //power:                        // Apply power in graphics block to calculate power based on number of motorised cars correctly
+        //weight:                         43;
+        //running_cost_factor:            120;
+      }
+      /* 迷你新幹線郵件車塗裝覆蓋 */
+      livery_override(mu_car_mail_ms){
         default:                        sw_e3_series_2000_graphics;
         cargo_capacity:                 56 * CapacityFactor();										        // Average 338/6, 402/7, 394/7 = 56  	
         cargo_age_period:				        param_decay_express;
@@ -17214,7 +17324,7 @@ item(FEAT_TRAINS, series_e3_2000) {
 # 1 "src/trains/e3_series/e3_series.pnml" 2
 # 1 "src/trains/e3_series/e3_series_700_item.pnml" 1
 /*---Coupling Switch---*/
-switch(FEAT_TRAINS, SELF, sw_e3_series_700_attach_vehid, [vehicle_type_id == series_e3_700 || vehicle_type_id == mu_car_ms]) {
+switch(FEAT_TRAINS, SELF, sw_e3_series_700_attach_vehid, [vehicle_type_id == series_e3_700 || vehicle_type_id == mu_car_ms || vehicle_type_id == mu_car_mail_ms]) {
  0: return string(MU_UNIQUE);
 }
 /*---END OF SECTION---*/
@@ -17272,6 +17382,17 @@ item(FEAT_TRAINS, series_e3_700) {
     }
     /*Multiple Unit Car*/
       livery_override(mu_car_ms){
+        default:                        sw_e3_series_700_graphics;
+        cargo_capacity:                 56 * CapacityFactor();										        // Average 338/6, 402/7, 394/7 = 56  	
+        cargo_age_period:				        param_decay_express;
+        loading_speed:					        56 * CapacityFactor() / param_loading_1D;					// Capacity divided by door loading factor
+        //cargo_subtype_text:             sw_e3_series_700_subtypetext_mucar;
+        //power:                        // Apply power in graphics block to calculate power based on number of motorised cars correctly
+        //weight:                         43;
+        //running_cost_factor:            120;
+      }
+      /* 迷你新幹線郵件車塗裝覆蓋 */
+      livery_override(mu_car_mail_ms){
         default:                        sw_e3_series_700_graphics;
         cargo_capacity:                 56 * CapacityFactor();										        // Average 338/6, 402/7, 394/7 = 56  	
         cargo_age_period:				        param_decay_express;
@@ -17660,7 +17781,8 @@ item(FEAT_TRAINS, series_e3_700) {
 			vehicle_type_id == series_e3_2000 ||
 			vehicle_type_id == series_e3_700 ||
 			vehicle_type_id == mu_car_ms ||
-			vehicle_type_id == mu_car_mail
+			vehicle_type_id == mu_car_mail ||
+			vehicle_type_id == mu_car_mail_ms
 		] ) {
         	0: return string(ONLY_ADD_MUCAR_FULL);
     	}
@@ -18127,7 +18249,8 @@ item(FEAT_TRAINS, series_e4_yellow) {
 			vehicle_type_id == series_e3_2000 ||
 			vehicle_type_id == series_e3_700 ||
 			vehicle_type_id == mu_car_ms ||
-			vehicle_type_id == mu_car_mail
+			vehicle_type_id == mu_car_mail ||
+			vehicle_type_id == mu_car_mail_ms
 		] ) {
         	0: return string(ONLY_ADD_MUCAR_FULL);
     	}
@@ -18597,7 +18720,8 @@ item(FEAT_TRAINS, series_e4_pink) {
 			vehicle_type_id == series_e3_2000 ||
 			vehicle_type_id == series_e3_700 ||
 			vehicle_type_id == mu_car_ms ||
-			vehicle_type_id == mu_car_mail
+			vehicle_type_id == mu_car_mail ||
+			vehicle_type_id == mu_car_mail_ms
 		] ) {
         	0: return string(ONLY_ADD_MUCAR_FULL);
     	}
@@ -19060,7 +19184,8 @@ item(FEAT_TRAINS, series_e5) {
 			vehicle_type_id == series_e3_2000 ||
 			vehicle_type_id == series_e3_700 ||
 			vehicle_type_id == mu_car_ms ||
-			vehicle_type_id == mu_car_mail
+			vehicle_type_id == mu_car_mail ||
+			vehicle_type_id == mu_car_mail_ms
 		] ) {
         	0: return string(ONLY_ADD_MUCAR_FULL);
     	}
@@ -19363,6 +19488,17 @@ item(FEAT_TRAINS, series_e6, 2006) {
     }
     /*Multiple Unit Car*/
       livery_override(mu_car_ms){
+        default:                        sw_e6_series_graphics;
+        cargo_capacity:                 48 * CapacityFactor();
+        cargo_age_period:				        param_decay_express;
+        loading_speed:                  48 * CapacityFactor() / param_loading_1D;
+        //cargo_subtype_text:           sw_e6_series_subtypetext_mucar;
+        //power:                        // Apply power in graphics block to calculate power based on number of motorised cars correctly
+        //weight:                         42;
+        //running_cost_factor:            120;
+      }
+      /* 迷你新幹線郵件車塗裝覆蓋 */
+      livery_override(mu_car_mail_ms){
         default:                        sw_e6_series_graphics;
         cargo_capacity:                 48 * CapacityFactor();
         cargo_age_period:				        param_decay_express;
@@ -19959,7 +20095,7 @@ item(FEAT_TRAINS, series_e7) {
 # 1 "src/trains/e8_series/e8_series_item.pnml" 1
 
 
-switch(FEAT_TRAINS, SELF, sw_e8_series_attach_vehid, [vehicle_type_id == series_e8 || vehicle_type_id == mu_car_ms]) {
+switch(FEAT_TRAINS, SELF, sw_e8_series_attach_vehid, [vehicle_type_id == series_e8 || vehicle_type_id == mu_car_ms || vehicle_type_id == mu_car_mail_ms]) {
  0: return string(MU_UNIQUE);
 }
 /*---END OF SECTION---*/
@@ -20017,6 +20153,17 @@ item(FEAT_TRAINS, series_e8) {
     }
     /*Multiple Unit Car*/
       livery_override(mu_car_ms){
+        default:                        sw_e8_series_graphics;
+        cargo_capacity:                 48 * CapacityFactor();
+        cargo_age_period:				param_decay_express;
+        loading_speed:                  48 * CapacityFactor() / param_loading_1D;
+        //cargo_subtype_text:             sw_e8_series_subtypetext_mucar;
+        //power:                        // Apply power in graphics block to calculate power based on number of motorised cars correctly
+        //weight:                         42;
+        //running_cost_factor:            120;
+      }
+      /* 迷你新幹線郵件車塗裝覆蓋 */
+      livery_override(mu_car_mail_ms){
         default:                        sw_e8_series_graphics;
         cargo_capacity:                 48 * CapacityFactor();
         cargo_age_period:				param_decay_express;

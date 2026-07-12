@@ -179,7 +179,7 @@
 
         switch (FEAT_TRAINS, PARENT, sw_n700s_series_midcars, cargo_subtype ) {				
                 0..1:  sw_n700_series_midcars;	
-                2:  sw_n700s_series_kamome_midcars;
+                2..3:  sw_n700s_series_kamome_midcars;
             }
 
 /* Cab selection */

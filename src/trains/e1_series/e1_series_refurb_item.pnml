@@ -75,7 +75,6 @@ item(FEAT_TRAINS, series_e1_refurb) {
       }
       /* 郵件車塗裝覆蓋 */
       livery_override(mu_car_mail){
-        cargo_subtype_text:             sw_e1_series_refurb_subtype_text;
         default:                        sw_e1_series_refurb_graphics;
         colour_mapping:                 return base_sprite_2cc + CB_RESULT_COLOUR_MAPPING_ADD_CC;
         cargo_capacity:                 34 * CapacityFactor();

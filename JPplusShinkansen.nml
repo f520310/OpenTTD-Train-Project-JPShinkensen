@@ -4970,6 +4970,30 @@ item(FEAT_TRAINS, series_922) {
             1:  sw_n700s_series_cabs;
             sw_n700s_series_midcars;	
         }
+
+/* === Mail car switches (reads SELF cargo_subtype) === */
+
+/* N700 mail midcars */
+switch (FEAT_TRAINS, SELF, sw_n700_series_midcars_mail, cargo_subtype ) {
+    3:  sw_n700_series_midcars_rainbow_revcheck;
+    default:sw_n700_series_midcars_revcheck;
+}
+
+switch (FEAT_TRAINS, SELF, sw_n700_series_graphics_mail, IsCab() ) {
+    1:  sw_n700_series_cabs;
+    sw_n700_series_midcars_mail;
+}
+
+/* N700S mail midcars */
+switch (FEAT_TRAINS, SELF, sw_n700s_series_midcars_mail, cargo_subtype ) {
+    0..1:  sw_n700_series_midcars;
+    2..3:  sw_n700s_series_kamome_midcars;
+}
+
+switch (FEAT_TRAINS, SELF, sw_n700s_series_graphics_mail, IsCab() ) {
+    1:  sw_n700s_series_cabs;
+    sw_n700s_series_midcars_mail;
+}
 # 1 "src/trains/n700_series/n700_series.pnml" 2
 # 1 "src/trains/n700_series/n700_series_item.pnml" 1
 
@@ -5048,7 +5072,7 @@ item(FEAT_TRAINS, series_n700) {
       /* 郵件車塗裝覆蓋 */
       livery_override(mu_car_mail){
         cargo_subtype_text:             sw_n700_series_subtype_text;
-        default:                        sw_n700_series_graphics;
+        default:                        sw_n700_series_graphics_mail;
         cargo_capacity:                 28 * CapacityFactor();	
         cargo_age_period:				param_decay_express;
         loading_speed:                  28 * CapacityFactor() / param_loading_2D;
@@ -5136,7 +5160,7 @@ item(FEAT_TRAINS, series_n700a) {
       /* 郵件車塗裝覆蓋 */
       livery_override(mu_car_mail){
         cargo_subtype_text:             sw_n700a_series_subtype_text;
-        default:                        sw_n700_series_graphics;
+        default:                        sw_n700_series_graphics_mail;
         cargo_capacity:                 28 * CapacityFactor();	
         cargo_age_period:				param_decay_express;
         loading_speed:                  28 * CapacityFactor() / param_loading_2D;
@@ -5225,7 +5249,7 @@ item(FEAT_TRAINS, series_n700s) {
       }
       /* 郵件車塗裝覆蓋 */
       livery_override(mu_car_mail){
-        default:                        sw_n700s_series_graphics;
+        default:                        sw_n700s_series_graphics_mail;
         cargo_subtype_text:             sw_n700s_series_subtype_text;
         cargo_capacity:                 28 * CapacityFactor();	
         cargo_age_period:				param_decay_express;

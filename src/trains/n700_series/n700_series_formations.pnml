@@ -249,3 +249,27 @@
             1:  sw_n700s_series_cabs;
             sw_n700s_series_midcars;	
         }
+
+/* === Mail car switches (reads SELF cargo_subtype) === */
+
+/* N700 mail midcars */
+switch (FEAT_TRAINS, SELF, sw_n700_series_midcars_mail, cargo_subtype ) {
+    3:  sw_n700_series_midcars_rainbow_revcheck;
+    default:sw_n700_series_midcars_revcheck;
+}
+
+switch (FEAT_TRAINS, SELF, sw_n700_series_graphics_mail, IsCab() ) {
+    1:  sw_n700_series_cabs;
+    sw_n700_series_midcars_mail;
+}
+
+/* N700S mail midcars */
+switch (FEAT_TRAINS, SELF, sw_n700s_series_midcars_mail, cargo_subtype ) {
+    0..1:  sw_n700_series_midcars;
+    2..3:  sw_n700s_series_kamome_midcars;
+}
+
+switch (FEAT_TRAINS, SELF, sw_n700s_series_graphics_mail, IsCab() ) {
+    1:  sw_n700s_series_cabs;
+    sw_n700s_series_midcars_mail;
+}

@@ -942,6 +942,7 @@ switch(FEAT_TRAINS, SELF, logo_jppsks, param_hide_logo) {1:sprite_logo_jppsks;}
         /* Define properties first, make sure to set all of them */
         property {
             name:                         string(MUCAR_MAIL);
+            misc_flags:                   bitmask(TRAIN_FLAG_2CC,TRAIN_FLAG_SPRITE_STACK);
             introduction_date:            date(1800,1,1);
             climates_available:           ALL_CLIMATES;
             model_life:                   VEHICLE_NEVER_EXPIRES;
